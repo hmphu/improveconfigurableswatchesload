@@ -3,7 +3,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-11-06 15:54:41
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-11-06 16:05:40
+ * @Last Modified time: 2016-11-06 16:18:46
  */
 
 class HMP_ImproveConfigurableSwatchesLoad_Helper_ConfigurableSwatches_Data extends Mage_ConfigurableSwatches_Helper_Data{
@@ -14,18 +14,23 @@ class HMP_ImproveConfigurableSwatchesLoad_Helper_ConfigurableSwatches_Data exten
      */
     public function isEnabled()
     {
+        if(Mage::registry('skip_configurableswatches_load'))
+            return false;
+
         if (is_null($this->_enabled)) {
-            if(Mage::registry('current_product')){
-                $isShowSwatches = (bool) Mage::getStoreConfig(self::CONFIG_PATH_ENABLED);
+            if(Mage::registry('current_category')){
+                $isShowSwatches = (bool) Mage::getStoreConfig(self::CONFIG_PATH_LIST_SWATCH_ATTRIBUTE) && (bool) Mage::getStoreConfig(self::CONFIG_PATH_ENABLED);
             }
             else{
-                $isShowSwatches = (bool) Mage::getStoreConfig(self::CONFIG_PATH_LIST_SWATCH_ATTRIBUTE);
+                $isShowSwatches = (bool) Mage::getStoreConfig(self::CONFIG_PATH_ENABLED);
             }
+            
             $this->_enabled = (
                 $isShowSwatches
                 && Mage::helper('configurableswatches/productlist')->getSwatchAttribute()
             );
         }
+
         return $this->_enabled;
     }
 }
