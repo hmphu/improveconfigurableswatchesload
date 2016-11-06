@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <HMP_ImproveConfigurableSwatchesLoad>
+            <version>1.1.9</version>
+        </HMP_ImproveConfigurableSwatchesLoad>
+    </modules>
+    <global>
+        <helpers>
+            <improveconfigurableswatchesload>
+                <class>HMP_ImproveConfigurableSwatchesLoad_Helper</class>
+            </improveconfigurableswatchesload>
+            <configurableswatches>
+                <rewrite>
+                    <data>HMP_ImproveConfigurableSwatchesLoad_Helper_ConfigurableSwatches_Data</data>
+                </rewrite>
+            </configurableswatches>
+        </helpers>
+    </global>
+</config>
