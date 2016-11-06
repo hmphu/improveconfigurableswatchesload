@@ -3,7 +3,7 @@
  * @Author: Phu Hoang
  * @Date:   2016-11-06 15:54:41
  * @Last Modified by:   Phu Hoang
- * @Last Modified time: 2016-11-06 16:34:09
+ * @Last Modified time: 2016-11-06 16:53:44
  */
 
 class HMP_ImproveConfigurableSwatchesLoad_Helper_ConfigurableSwatches_Data extends Mage_ConfigurableSwatches_Helper_Data{
@@ -15,7 +15,7 @@ class HMP_ImproveConfigurableSwatchesLoad_Helper_ConfigurableSwatches_Data exten
     public function isEnabled()
     {
         if (is_null($this->_enabled)) {
-            if(Mage::registry('product')){
+            if(Mage::registry('_helper/catalog/product_view')){
                 $isShowSwatches = (bool) Mage::getStoreConfig(self::CONFIG_PATH_ENABLED);
             }
             else{
